@@ -6,316 +6,7 @@
     <title>FyG Ingeniería - Multisoluciones</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #0f2c59; /* Azul Corporativo */
-            --secondary: #008080; /* Teal / Verde Sanitario */
-            --light: #f4f7f6;
-            --dark: #1a1a1a;
-            --text-muted: #666;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-
-        /* --- ANIMACIONES BASE --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: var(--transition);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- NAVBAR --- */
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-        }
-
-        .logo {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-        }
-        .logo span { color: var(--secondary); }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        nav a:hover { color: var(--secondary); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(15,44,89,0.95) 0%, rgba(0,128,128,0.9) 100%);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 1rem;
-            margin-top: 0;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s forwards;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s 0.5s forwards;
-        }
-
-        .btn {
-            background: white;
-            color: var(--primary);
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            opacity: 0;
-            animation: fadeInUp 1s 0.8s forwards;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            background: var(--secondary);
-            color: white;
-        }
-
-        /* --- NOSOTROS --- */
-        .about {
-            padding: 5rem 10%;
-            background: white;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: var(--secondary);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .about-card {
-            padding: 2rem;
-            background: var(--light);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .about-card i {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-
-        /* --- ESPECIALIDADES --- */
-        .services {
-            padding: 5rem 5%;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: var(--transition);
-            border-top: 4px solid var(--primary);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-top-color: var(--secondary);
-        }
-
-        .service-header {
-            background: var(--primary);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .service-card:hover .service-header {
-            background: var(--secondary);
-            transition: var(--transition);
-        }
-
-        .service-body {
-            padding: 1.5rem;
-        }
-
-        .service-body ul {
-            list-style: none;
-        }
-
-        .service-body li {
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .service-body li i {
-            color: var(--secondary);
-            font-size: 0.8rem;
-        }
-
-        /* --- CLIENTES --- */
-        .clients {
-            background: white;
-            padding: 4rem 10%;
-            text-align: center;
-        }
-
-        .client-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .client-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ccc;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: var(--transition);
-        }
-
-        .client-logo:hover {
-            color: var(--primary);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 4rem 10% 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-info h3 {
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .footer-info p {
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-
-        .footer-info a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
-
-        /* --- ANIMACIONES KEYFRAMES --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h1 { font-size: 2.2rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -335,32 +26,32 @@
         <a href="#servicios" class="btn">Ver Especialidades</a>
     </section>
 
-    <section class="about id="nosotros"">
+    <section class="about" id="nosotros">
         <h2 class="section-title reveal">Nuestra Empresa</h2>
-        <p style="max-width: 800px; margin: 0 auto 3rem; color: var(--text-muted); line-height: 1.6;" class="reveal">
-            Contamos con una amplia y comprobada trayectoria en el desarrollo de Obras Menores, Redes Sanitarias, Mantención de Plantas de Tratamiento y Gestión de Aguas.
+        <p class="about-lead reveal">
+            FyG Ingeniería ha desarrollado una estructura organizacional en torno a la habilidad de ofrecer servicios en paquete y de integrar, administrar y ejecutar la prestación de soluciones integrales en las instalaciones de nuestros clientes.
         </p>
         <div class="about-grid">
             <div class="about-card reveal">
                 <i class="fa-solid fa-lightbulb"></i>
                 <h3>Innovación Joven</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Poseemos nuevas ideas, propuestas interesantes e innovadoras en cuanto a diseño de objetos y espacios.</p>
+                <p>Como somos una empresa administrada por jóvenes, poseemos nuevas ideas, propuestas interesantes e innovadoras en cuanto a diseño, tanto de objetos como de espacios.</p>
             </div>
             <div class="about-card reveal">
                 <i class="fa-solid fa-gears"></i>
                 <h3>Continuidad Operacional</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Aseguramos el óptimo estado de su infraestructura gracias a nuestro calificado equipo técnico.</p>
+                <p>Nos respaldamos en un equipo técnico calificado para asegurar la continuidad operacional y el óptimo estado de su infraestructura.</p>
             </div>
             <div class="about-card reveal">
                 <i class="fa-solid fa-truck-pickup"></i>
                 <h3>Equipamiento Propio</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Maquinaria de alta tecnología, camiones limpia fosas, camión pluma y sistemas de videoinspección.</p>
+                <p>Contamos con maquinaria complementaria propia de alta tecnología incluyendo camiones limpia fosas, camión pluma y sistemas de videoinspección.</p>
             </div>
         </div>
     </section>
 
     <section class="services" id="servicios">
-        <h2 class="section-title reveal" style="text-align: center;">Especialidades</h2>
+        <h2 class="section-title reveal">Especialidades</h2>
         <div class="services-grid">
             
             <div class="service-card reveal">
@@ -370,10 +61,10 @@
                 <div class="service-body">
                     <ul>
                         <li><i class="fa-solid fa-check"></i> Terminaciones y revestimientos.</li>
-                        <li><i class="fa-solid fa-check"></i> Mantención de techumbres.</li>
-                        <li><i class="fa-solid fa-check"></i> Rejillas, aguas lluvias y canales.</li>
-                        <li><i class="fa-solid fa-check"></i> Tapas metálicas y hormigón.</li>
-                        <li><i class="fa-solid fa-check"></i> Estructuras y ventanales.</li>
+                        <li><i class="fa-solid fa-check"></i> Mantención preventiva y correctiva de techumbres.</li>
+                        <li><i class="fa-solid fa-check"></i> Fabricación de rejillas, aguas lluvias y canales.</li>
+                        <li><i class="fa-solid fa-check"></i> Fabricación de tapas metálicas y hormigón.</li>
+                        <li><i class="fa-solid fa-check"></i> Estructuras y ventanales de vidrio.</li>
                     </ul>
                 </div>
             </div>
@@ -384,26 +75,26 @@
                 </div>
                 <div class="service-body">
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> Redes de agua potable y caliente.</li>
-                        <li><i class="fa-solid fa-check"></i> Instalación de termos e instalación eléctrica.</li>
-                        <li><i class="fa-solid fa-check"></i> Nuevas líneas de alcantarillado.</li>
-                        <li><i class="fa-solid fa-check"></i> Limpieza con camión limpiafosa (Hydrojet).</li>
-                        <li><i class="fa-solid fa-check"></i> Inspección con cámara de tuberías.</li>
+                        <li><i class="fa-solid fa-check"></i> Instalación de redes de agua potable y caliente.</li>
+                        <li><i class="fa-solid fa-check"></i> Instalación de termos de agua caliente y tableros de fuerza.</li>
+                        <li><i class="fa-solid fa-check"></i> Reparación e instalación de líneas de alcantarillado.</li>
+                        <li><i class="fa-solid fa-check"></i> Limpieza con camión limpiafosa (Sistema hydrojet).</li>
+                        <li><i class="fa-solid fa-check"></i> Inspección de tuberías con cámara y cámaras desgrasadoras.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="service-card reveal">
                 <div class="service-header">
-                    <h3>III. Plantas e Tratamiento</h3>
+                    <h3>III. Planta de Tratamiento</h3>
                 </div>
                 <div class="service-body">
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> Mantenimiento de estanque acumulador.</li>
-                        <li><i class="fa-solid fa-check"></i> Pruebas y análisis de agua.</li>
-                        <li><i class="fa-solid fa-check"></i> Operación y control de cloración.</li>
-                        <li><i class="fa-solid fa-check"></i> Manejo de parámetros biológicos.</li>
-                        <li><i class="fa-solid fa-check"></i> Venta e instalación de sopladores.</li>
+                        <li><i class="fa-solid fa-check"></i> Mantenimiento de estanque acumulador y plantas.</li>
+                        <li><i class="fa-solid fa-check"></i> Pruebas, análisis de agua y parámetros biológicos.</li>
+                        <li><i class="fa-solid fa-check"></i> Control del sistema de cloración y parámetros.</li>
+                        <li><i class="fa-solid fa-check"></i> Instalación de sistema de bombeo y sopladores.</li>
+                        <li><i class="fa-solid fa-check"></i> Confección de dren y plantas de riego.</li>
                     </ul>
                 </div>
             </div>
@@ -414,10 +105,10 @@
                 </div>
                 <div class="service-body">
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> Camión Pluma.</li>
-                        <li><i class="fa-solid fa-check"></i> Camión limpia fosa (5m³).</li>
-                        <li><i class="fa-solid fa-check"></i> Video Inspección de ductos.</li>
-                        <li><i class="fa-solid fa-check"></i> Detección de fugas (Gas trazador).</li>
+                        <li><i class="fa-solid fa-check"></i> Camión pluma.</li>
+                        <li><i class="fa-solid fa-check"></i> Camión limpia fosa de 5m³ para aguas servidas y grasas.</li>
+                        <li><i class="fa-solid fa-check"></i> Video inspección de ductos.</li>
+                        <li><i class="fa-solid fa-check"></i> Detección de fugas con gas trazador y ultrasonido.</li>
                         <li><i class="fa-solid fa-check"></i> Transporte de residuos no peligrosos.</li>
                     </ul>
                 </div>
@@ -427,7 +118,7 @@
     </section>
 
     <section class="clients">
-        <h3 class="reveal" style="color: var(--text-muted);">Algunos de nuestros clientes</h3>
+        <h3 class="reveal">Algunos de nuestros clientes</h3>
         <div class="client-logos reveal">
             <div class="client-logo">enex</div>
             <div class="client-logo">Watt's</div>
@@ -439,11 +130,11 @@
         <div class="footer-grid">
             <div class="footer-info">
                 <h3>MULTISOLUCIONES</h3>
-                <p>Soluciones íntegras y de calidad para la continuidad de su negocio.</p>
+                <p>Brindamos a nuestros clientes el servicio de excelencia, rapidez y calidad que se merecen.</p>
             </div>
             <div class="footer-info">
                 <h3>Contacto Comercial</h3>
-                <p><strong>Daniel Fernández P.</strong></p>
+                <p class="contact-name">Daniel Fernández P.</p>
                 <p><i class="fa-solid fa-phone"></i> <a href="tel:+56962261898">+56 9 6226 1898</a></p>
                 <p><i class="fa-solid fa-envelope"></i> <a href="mailto:dfernandez@multisoluciones.cl">dfernandez@multisoluciones.cl</a></p>
                 <p><i class="fa-solid fa-globe"></i> <a href="http://www.multisoluciones.cl" target="_blank">www.multisoluciones.cl</a></p>
@@ -454,26 +145,6 @@
         </div>
     </footer>
 
-    <script>
-        // Animación Reveal on Scroll
-        window.addEventListener('scroll', revealElements);
-
-        function revealElements() {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 120; // Margen de activación
-
-                if (elementTop < windowHeight - elementVisible) {
-                    element.add('active');
-                }
-            });
-        }
-        
-        // Ejecución inicial por si ya hay elementos visibles
-        revealElements();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
