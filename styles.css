@@ -1,0 +1,372 @@
+:root {
+    --primary: #0f2c59; /* Azul Corporativo de la PPT */
+    --secondary: #008080; /* Verde Azulado / Área sanitaria y de aguas */
+    --light: #f4f7f6;
+    --dark: #1a1a1a;
+    --text-muted: #666;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    overflow-x: hidden;
+    padding-top: 70px;
+}
+
+/* --- ANIMACIONES BASE (SCROLL REVEAL) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: var(--transition);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- NAVBAR --- */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+}
+
+.logo {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--secondary);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--secondary);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 85vh;
+    background: linear-gradient(135deg, rgba(15,44,89,0.95) 0%, rgba(0,128,128,0.9) 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s forwards;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s 0.5s forwards;
+}
+
+.btn {
+    background: white;
+    color: var(--primary);
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    animation: fadeInUp 1s 0.8s forwards;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: var(--secondary);
+    color: white;
+}
+
+/* --- SOBRE NOSOTROS --- */
+.about {
+    padding: 5rem 10%;
+    background: white;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: var(--secondary);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about-lead {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.about-card {
+    padding: 2rem;
+    background: var(--light);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-card i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.about-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.about-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* --- ESPECIALIDADES --- */
+.services {
+    padding: 5rem 5%;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transition: var(--transition);
+    border-top: 4px solid var(--primary);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-top-color: var(--secondary);
+}
+
+.service-header {
+    background: var(--primary);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-header {
+    background: var(--secondary);
+}
+
+.service-body {
+    padding: 1.5rem;
+}
+
+.service-body ul {
+    list-style: none;
+}
+
+.service-body li {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: var(--dark);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.4;
+}
+
+.service-body li i {
+    color: var(--secondary);
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+/* --- CLIENTES --- */
+.clients {
+    background: white;
+    padding: 5rem 10%;
+    text-align: center;
+}
+
+.clients h3 {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.client-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+
+.client-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.client-logo:hover {
+    color: var(--primary);
+}
+
+/* --- FOOTER & CONTACTO --- */
+footer {
+    background: var(--primary);
+    color: white;
+    padding: 4rem 10% 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+}
+
+.footer-info h3 {
+    margin-bottom: 1.2rem;
+    color: var(--secondary);
+    font-size: 1.3rem;
+}
+
+.footer-info p {
+    margin-bottom: 0.6rem;
+    opacity: 0.8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.footer-info .contact-name {
+    font-weight: 600;
+    opacity: 1;
+    margin-bottom: 1rem;
+}
+
+.footer-info i {
+    margin-right: 0.5rem;
+    color: var(--secondary);
+}
+
+.footer-info a {
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-info a:hover {
+    color: var(--secondary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    opacity: 0.6;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- KEYFRAMES --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+    nav ul { display: none; } /* En producción se podría cambiar por un menú hamburguesa */
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1rem; }
+    .section-title { font-size: 1.8rem; }
+}
