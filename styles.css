@@ -17,6 +17,56 @@ body {
     font-family: var(--font-main);
     background-color: var(--bg-light);
     overflow-x: hidden;
+    padding-top: 70px; /* Compensación por el Navbar fijo */
+}
+
+/* ================= BARRA DE NAVEGACIÓN (NAVBAR) ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(11, 30, 54, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 10000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-brand {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue);
 }
 
 /* ================= DISEÑO ESTRUCTURAL GENERAL ================= */
@@ -36,7 +86,7 @@ body {
     position: relative;
 }
 
-/* --- Vinculación de imágenes corregida con dobles comillas para evitar fallos de lectura --- */
+/* --- Vinculación de imágenes con dobles comillas --- */
 .img-bg-hero { background-image: url("herramientas construccion.png"); }
 .img-bg-about { background-image: url("piezas industriales.png"); }
 .img-bg-clients { background-image: url("compas.png"); }
@@ -52,6 +102,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: scroll !important; /* Corregido: Sin zoom forzado */
     min-height: 500px;
 }
 
@@ -207,6 +258,9 @@ body {
 
 /* ================= RESPONSIVIDAD GENERAL (TABLETS Y MÓVILES) ================= */
 @media (max-width: 992px) {
+    .navbar { display: none; } /* Oculta menú en responsive por simplicidad */
+    body { padding-top: 0; }
+
     .hero-container, .about-container, .clients-container, 
     .business-container, .specialties-title-container, .spec-detail-container, .footer-container {
         flex-direction: column;
@@ -223,7 +277,6 @@ body {
         padding: 4rem 2rem !important; margin-left: 0 !important;
     }
 
-    /* Ordenamiento de flexboxes */
     .hero-left { order: 1; } .hero-right { order: 2; }
     .about-left { order: 2; } .about-right { order: 1; }
     .clients-left { order: 2; } .clients-right { order: 1; }
@@ -246,7 +299,6 @@ body {
     .hero-badge, .business-badge, .spec-detail-badge { top: 45vh; left: 50%; transform: translate(-50%, -50%); }
     .about-badge, .clients-badge, .spec-title-badge, .spec-detail-badge-right { top: 0; left: 50%; transform: translate(-50%, -50%); right: auto; }
 
-    /* Footer Responsive */
     .footer-graphics { width: 100%; height: 150px; position: relative; }
     .layer-1 { clip-path: polygon(0 0, 50% 100%, 100% 0); }
     .layer-2 { clip-path: polygon(0 0, 50% 85%, 100% 0); }
@@ -266,16 +318,13 @@ body {
     .icon-circle i { font-size: 2rem; }
 }
 
-/* ================= EFECTOS DE MOVIMIENTO Y TRANSICIONES (CORREGIDO) ================= */
-
-/* Estado inicial con animación automática por si falla JavaScript */
+/* ================= EFECTOS DE MOVIMIENTO Y TRANSICIONES ================= */
 .hero-content, .about-content, .clients-content, .business-content, .spec-detail-content, .spec-title-content {
     opacity: 0;
     transform: translateY(30px);
     animation: aparecerSuave 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Animación fluida de entrada */
 @keyframes aparecerSuave {
     to {
         opacity: 1;
@@ -283,29 +332,18 @@ body {
     }
 }
 
-/* Retardos opcionales para que no aparezca todo al mismo tiempo (Efecto Cascada) */
 .about-content { animation-delay: 0.2s; }
 .clients-content { animation-delay: 0.3s; }
 .business-content { animation-delay: 0.2s; }
 
-/* Efecto de profundidad Parallax para las imágenes de fondo (Solo escritorio) */
-@media (min-width: 993px) {
-    .hero-right, .about-left, .clients-left, .business-right, .spec-title-left, .image-side {
-        background-attachment: fixed;
-    }
-}
-
-/* Transiciones suaves globales para elementos interactivos */
 .icon-circle, .client-logo-wrapper img, .contact-item {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Efecto Hover para logos de clientes */
 .client-logo-wrapper:hover img {
     transform: scale(1.08);
     filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
 }
-
 
 /* ================= BOTÓN FLOTANTE DE WHATSAPP ================= */
 .whatsapp-btn {
