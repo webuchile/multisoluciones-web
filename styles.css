@@ -20,7 +20,6 @@ body {
 }
 
 /* ================= DISEÑO ESTRUCTURAL GENERAL ================= */
-
 .hero-container, .about-container, .clients-container, 
 .business-container, .specialties-title-container, .spec-detail-container {
     display: flex;
@@ -30,12 +29,9 @@ body {
     flex-wrap: wrap;
 }
 
-.hero-left, .hero-right, 
-.about-left, .about-right, 
-.clients-left, .clients-right,
-.business-left, .business-right,
-.spec-title-left, .spec-title-right,
-.spec-detail-left, .spec-detail-right {
+.hero-left, .hero-right, .about-left, .about-right, 
+.clients-left, .clients-right, .business-left, .business-right,
+.spec-title-left, .spec-title-right, .spec-detail-left, .spec-detail-right {
     flex: 1 1 50%;
     position: relative;
 }
@@ -58,12 +54,10 @@ body {
     top: 50%;
     z-index: 10;
 }
-
 .hero-badge, .about-badge, .clients-badge, .business-badge, .spec-title-badge, .spec-detail-badge {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
 .spec-detail-badge-right {
     right: 50%;
     top: 50%;
@@ -81,28 +75,18 @@ body {
     justify-content: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
-
 .icon-circle i {
     color: #ffffff;
     font-size: 2.5rem;
     transition: transform 0.5s ease; 
 }
-
 .icon-circle:hover i {
     transform: rotate(25deg) scale(1.1);
 }
 
-/* ================= ESTILOS SECCIÓN 1: HERO ================= */
-.hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 3rem 10% 3rem 8%;
-}
-.logo-placeholder {
-    width: 220px; height: 60px; border: 2px dashed #ccc;
-    display: flex; align-items: center; justify-content: center; background: #f9f9f9;
-}
+/* ================= SECCIÓN 1: HERO ================= */
+.hero-left { display: flex; flex-direction: column; justify-content: space-between; padding: 3rem 10% 3rem 8%; }
+.logo-placeholder { width: 220px; height: 60px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; background: #f9f9f9; }
 .placeholder-text { font-size: 0.75rem; color: #888; text-transform: uppercase; text-align: center; padding: 10px; }
 .hero-content { margin: 4rem 0; }
 .hero-content h1 { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); text-transform: uppercase; margin-bottom: 1rem;}
@@ -110,20 +94,20 @@ body {
 .date-text { font-size: 1rem; font-weight: 600; color: var(--primary-color); }
 .hero-right .image-placeholder { border-left: 2px solid #eaeaea; }
 
-/* ================= ESTILOS SECCIÓN 2: NUESTRA EMPRESA ================= */
+/* ================= SECCIÓN 2: NUESTRA EMPRESA ================= */
 .about-left .image-placeholder { border-right: 2px solid #eaeaea; }
 .about-right { display: flex; align-items: center; padding: 5rem 8% 5rem 10%; }
 .about-content h2 { font-size: 2.8rem; font-weight: 700; color: var(--primary-color); margin-bottom: 2rem; }
 .about-content p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; text-align: justify; }
 
-/* ================= ESTILOS SECCIÓN 3: CLIENTES ================= */
+/* ================= SECCIÓN 3: CLIENTES ================= */
 .clients-left .image-placeholder { border-right: 2px solid #eaeaea; }
 .clients-right { display: flex; align-items: center; justify-content: center; padding: 5rem 5%; }
 .clients-content h2 { font-size: 2.6rem; font-weight: 700; color: var(--primary-color); margin-bottom: 3rem; text-align: center; }
 .logos-stack { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
 .client-logo-placeholder { width: 240px; height: 75px; border: 2px dashed #bbb; background-color: #fafafa; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
 
-/* ================= ESTILOS SECCIÓN 4: ÁREAS DE NEGOCIOS ================= */
+/* ================= SECCIÓN 4: ÁREAS DE NEGOCIOS ================= */
 .business-left { display: flex; align-items: center; padding: 5rem 10% 5rem 8%; }
 .business-content h2 { font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 2.5rem; }
 .business-content h3 { font-size: 1.4rem; font-weight: 700; color: #000000; margin-bottom: 1.2rem; }
@@ -133,145 +117,180 @@ body {
 .specialties-list li { font-size: 1.1rem; font-weight: 600; color: #000000; margin-bottom: 0.4rem; }
 .business-right .image-placeholder { border-left: 2px solid #eaeaea; }
 
-/* ================= ESTILOS SECCIÓN 5: TITULAR ESPECIALIDADES ================= */
+/* ================= SECCIÓN 5: TITULAR ESPECIALIDADES ================= */
 .spec-title-left .image-placeholder { border-right: 2px solid #eaeaea; }
 .spec-title-right { display: flex; align-items: center; padding: 5rem 10%; }
 .spec-title-content h2 { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); letter-spacing: 2px; }
 
-/* ================= ESTILOS GENERALES DESGLOSE DE ESPECIALIDADES ================= */
-.spec-detail-content {
+/* ================= ESTILOS DESGLOSE DE ESPECIALIDADES ================= */
+.spec-detail-content { width: 100%; }
+.spec-detail-content h2 { font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 2rem; line-height: 1.2; }
+.bullet-list { list-style: none; padding-left: 0; }
+.bullet-list li { font-size: 1.1rem; color: #000000; line-height: 1.6; margin-bottom: 0.6rem; position: relative; padding-left: 20px; }
+.bullet-list li::before { content: "•"; color: var(--primary-color); font-weight: bold; font-size: 1.3rem; position: absolute; left: 0; top: -2px; }
+
+.sub-block { margin-bottom: 2rem; }
+.sub-block:last-child { margin-bottom: 0; }
+.sub-block h3 { font-size: 1.15rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Cortes Diagonales Estilizados */
+@media (min-width: 993px) {
+    .type-diagonal-left .image-side { clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%); z-index: 2; }
+    .type-diagonal-left .text-side { margin-left: -7%; padding: 5rem 8% 5rem 12%; display: flex; align-items: center; }
+    
+    .type-diagonal-right .text-side { padding: 5rem 12% 5rem 8%; display: flex; align-items: center; z-index: 2; }
+    .type-diagonal-right .image-side { clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%); margin-left: -7%; }
+}
+
+/* ================= SECCIÓN 10: CONTACTO / FOOTER ================= */
+.footer-container {
+    display: flex;
     width: 100%;
-}
-.spec-detail-content h2 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-}
-.bullet-list {
-    list-style: none;
-    padding-left: 0;
-}
-.bullet-list li {
-    font-size: 1.1rem;
-    color: #000000;
-    line-height: 1.6;
-    margin-bottom: 0.8rem;
+    min-height: 60vh;
+    background-color: var(--bg-light);
     position: relative;
-    padding-left: 20px;
+    align-items: center;
+    padding: 4rem 5%;
 }
-/* Viñeta cuadrada o punto personalizado */
-.bullet-list li::before {
-    content: "•";
-    color: var(--primary-color);
-    font-weight: bold;
-    font-size: 1.3rem;
+
+.footer-graphics {
     position: absolute;
     left: 0;
-    top: -2px;
+    top: 0;
+    height: 100%;
+    width: 35%;
+    overflow: hidden;
 }
 
-/* Sub-bloques internos para el Área Sanitaria */
-.sub-block {
-    margin-bottom: 2.5rem;
+/* Capas del Triángulo Geométrico de Cierre */
+.triangle-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
-.sub-block:last-child {
-    margin-bottom: 0;
+.layer-1 {
+    background-color: #0b1e36;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    z-index: 1;
 }
-.sub-block h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.layer-2 {
+    background-color: #17365d;
+    clip-path: polygon(0 0, 85% 50%, 0 100%);
+    z-index: 2;
 }
-
-/* Cortes Diagonales Estilizados en Pantallas Grandes */
-@media (min-width: 993px) {
-    /* Corte Diagonal Tipo 1: Imagen Izquierda cortada hacia adentro */
-    .type-diagonal-left .image-side {
-        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-        z-index: 2;
-    }
-    .type-diagonal-left .text-side {
-        margin-left: -7%;
-        padding: 5rem 8% 5rem 12%;
-        display: flex;
-        align-items: center;
-    }
-    
-    /* Corte Diagonal Tipo 2: Texto izquierdo e Imagen Derecha recibiendo el corte */
-    .type-diagonal-right .text-side {
-        padding: 5rem 12% 5rem 8%;
-        display: flex;
-        align-items: center;
-        z-index: 2;
-    }
-    .type-diagonal-right .image-side {
-        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
-        margin-left: -7%;
-    }
+.layer-3 {
+    background-color: #265584;
+    clip-path: polygon(0 0, 70% 50%, 0 100%);
+    z-index: 3;
 }
 
-/* ================= RESPONSIVIDAD (MÓVILES Y TABLETS) ================= */
+.footer-body {
+    display: flex;
+    width: 65%;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    z-index: 5;
+}
+
+.footer-logo-placeholder {
+    width: 250px;
+    height: 80px;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-divider-line {
+    width: 2px;
+    height: 180px;
+    background-color: #000000;
+}
+
+.footer-info-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #0b1e36;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.contact-item i {
+    font-size: 1.4rem;
+    color: var(--accent-blue);
+    width: 30px;
+    text-align: center;
+}
+
+/* ================= RESPONSIVIDAD GENERAL (TABLETS Y MÓVILES) ================= */
 @media (max-width: 992px) {
     .hero-container, .about-container, .clients-container, 
-    .business-container, .specialties-title-container, .spec-detail-container {
+    .business-container, .specialties-title-container, .spec-detail-container, .footer-container {
         flex-direction: column;
     }
     
     .hero-left, .hero-right, .about-left, .about-right, 
     .clients-left, .clients-right, .business-left, .business-right,
     .spec-title-left, .spec-title-right, .spec-detail-left, .spec-detail-right {
-        flex: 1 1 100%;
-        width: 100%;
+        flex: 1 1 100%; width: 100%;
     }
     
-    .hero-left, .about-right, .clients-right, .business-left, .spec-title-right, .type-diagonal-left .text-side, .type-diagonal-right .text-side {
-        padding: 4rem 2rem !important;
-        margin-left: 0 !important;
+    .hero-left, .about-right, .clients-right, .business-left, .spec-title-right, 
+    .type-diagonal-left .text-side, .type-diagonal-right .text-side {
+        padding: 4rem 2rem !important; margin-left: 0 !important;
     }
 
-    /* Ajustes de Orden */
+    /* Ordenamiento de bloques */
     .hero-left { order: 1; } .hero-right { order: 2; }
     .about-left { order: 2; } .about-right { order: 1; }
     .clients-left { order: 2; } .clients-right { order: 1; }
     .business-left { order: 1; } .business-right { order: 2; }
     .spec-title-left { order: 2; } .spec-title-right { order: 1; }
     
-    /* Inciso I: Imagen arriba, texto abajo */
     .type-diagonal-left .image-side { order: 1; clip-path: none; }
     .type-diagonal-left .text-side { order: 2; }
-
-    /* Inciso II: Texto arriba, imagen abajo */
     .type-diagonal-right .text-side { order: 1; }
     .type-diagonal-right .image-side { order: 2; clip-path: none; margin-left: 0; }
     
     .hero-right .image-placeholder, .about-left .image-placeholder, 
     .clients-left .image-placeholder, .business-right .image-placeholder,
     .spec-title-left .image-placeholder, .image-side .image-placeholder {
-        min-height: 350px;
-        height: 45vh;
+        min-height: 350px; height: 45vh;
     }
     
     .hero-content h1 { font-size: 2.5rem; }
     .about-content h2, .clients-content h2, .business-content h2, .spec-title-content h2, .spec-detail-content h2 { font-size: 2.2rem; }
     
-    /* Insignias móviles en el punto de división */
-    .hero-badge, .business-badge, .spec-detail-badge {
-        top: 45vh; left: 50%; transform: translate(-50%, -50%);
-    }
-    .about-badge, .clients-badge, .spec-title-badge, .spec-detail-badge-right {
-        top: 0; left: 50%; transform: translate(-50%, -50%); right: auto;
-    }
+    .hero-badge, .business-badge, .spec-detail-badge { top: 45vh; left: 50%; transform: translate(-50%, -50%); }
+    .about-badge, .clients-badge, .spec-title-badge, .spec-detail-badge-right { top: 0; left: 50%; transform: translate(-50%, -50%); right: auto; }
+
+    /* Ajustes de Footer Móvil */
+    .footer-graphics { width: 100%; height: 150px; position: relative; }
+    .layer-1 { clip-path: polygon(0 0, 50% 100%, 100% 0); }
+    .layer-2 { clip-path: polygon(0 0, 50% 85%, 100% 0); }
+    .layer-3 { clip-path: polygon(0 0, 50% 70%, 100% 0); }
+    
+    .footer-body { width: 100%; flex-direction: column; gap: 2rem; padding: 2rem 0; }
+    .footer-divider-line { width: 150px; height: 2px; }
+    .footer-info-area { align-items: center; }
 }
 
 @media (max-width: 480px) {
     .hero-content h1 { font-size: 2rem; }
-    .hero-content .subtitle, .about-content p, .business-content p, .bullet-list li { font-size: 1rem; }
-    .about-content h2, .clients-content h2, .business-content h2, .spec-title-content h2, .spec-detail-content h2 { font-size: 1.7rem; }
-    .client-logo-placeholder { width: 200px; height: 65px; }
+    .hero-content .subtitle, .about-content p, .business-content p, .bullet-list li, .contact-item { font-size: 1rem; }
+    .about-content h2, .clients-content h2, .business-content h2, .spec-title-content h2, .spec-detail-content h2 { font-size: 1.6rem; }
+    .client-logo-placeholder { width: 180px; height: 60px; }
     .icon-circle { width: 80px; height: 80px; }
     .icon-circle i { font-size: 2rem; }
 }
