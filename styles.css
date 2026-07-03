@@ -266,27 +266,29 @@ body {
     .icon-circle i { font-size: 2rem; }
 }
 
-/* ================= EFECTOS DE MOVIMIENTO Y TRANSICIONES ================= */
+/* ================= EFECTOS DE MOVIMIENTO Y TRANSICIONES (CORREGIDO) ================= */
 
-/* Estado inicial para la aparición suave (Scroll Reveal) */
+/* Estado inicial con animación automática por si falla JavaScript */
 .hero-content, .about-content, .clients-content, .business-content, .spec-detail-content, .spec-title-content {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(30px);
+    animation: aparecerSuave 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Estado cuando la sección es visible en pantalla */
-.hero-content.reveal-active, 
-.about-content.reveal-active, 
-.clients-content.reveal-active, 
-.business-content.reveal-active, 
-.spec-detail-content.reveal-active, 
-.spec-title-content.reveal-active {
-    opacity: 1;
-    transform: translateY(0);
+/* Animación fluida de entrada */
+@keyframes aparecerSuave {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Efecto de profundidad Parallax para las imágenes de fondo (Solo escritorios) */
+/* Retardos opcionales para que no aparezca todo al mismo tiempo (Efecto Cascada) */
+.about-content { animation-delay: 0.2s; }
+.clients-content { animation-delay: 0.3s; }
+.business-content { animation-delay: 0.2s; }
+
+/* Efecto de profundidad Parallax para las imágenes de fondo (Solo escritorio) */
 @media (min-width: 993px) {
     .hero-right, .about-left, .clients-left, .business-right, .spec-title-left, .image-side {
         background-attachment: fixed;
@@ -298,7 +300,7 @@ body {
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Efecto Hover extra para logos de clientes */
+/* Efecto Hover para logos de clientes */
 .client-logo-wrapper:hover img {
     transform: scale(1.08);
     filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
@@ -331,20 +333,12 @@ body {
     background-color: #20ba5a;
 }
 
-/* Animación de Ondas/Pulso para capturar la atención */
 @keyframes pulse-whatsapp {
-    0% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* Ajuste del botón para pantallas móviles pequeñas */
 @media (max-width: 480px) {
     .whatsapp-btn {
         bottom: 20px;
