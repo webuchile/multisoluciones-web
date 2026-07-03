@@ -1,8 +1,8 @@
 /* --- Variables de Color y Fuentes --- */
 :root {
-    --primary-color: #0b1e36; /* Azul oscuro para los títulos principales */
-    --accent-blue: #3b82a6;  /* Azul de los círculos con iconos */
-    --text-muted: #555555;   /* Gris para el texto de los párrafos */
+    --primary-color: #0b1e36; 
+    --accent-blue: #3b82a6;  
+    --text-muted: #555555;   
     --bg-light: #ffffff;
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -21,8 +21,8 @@ body {
 
 /* ================= DISEÑO ESTRUCTURAL GENERAL ================= */
 
-/* Contenedores Base de Pantalla Completa */
-.hero-container, .about-container, .clients-container, .business-container {
+.hero-container, .about-container, .clients-container, 
+.business-container, .specialties-title-container, .spec-detail-container {
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -30,16 +30,16 @@ body {
     flex-wrap: wrap;
 }
 
-/* Columnas de Texto e Imagen compartiendo un 50% cada una */
 .hero-left, .hero-right, 
 .about-left, .about-right, 
 .clients-left, .clients-right,
-.business-left, .business-right {
+.business-left, .business-right,
+.spec-title-left, .spec-title-right,
+.spec-detail-left, .spec-detail-right {
     flex: 1 1 50%;
     position: relative;
 }
 
-/* Marcador de posición estándar para imágenes */
 .image-placeholder {
     width: 100%;
     height: 100%;
@@ -52,17 +52,22 @@ body {
     background-position: center;
 }
 
-/* Insignias e Iconos Circulares Flotantes */
+/* Insignias Flotantes */
 .floating-badge {
     position: absolute;
     top: 50%;
     z-index: 10;
 }
 
-/* Posición de insignias entre columnas */
-.hero-badge, .about-badge, .clients-badge, .business-badge {
+.hero-badge, .about-badge, .clients-badge, .business-badge, .spec-title-badge, .spec-detail-badge {
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.spec-detail-badge-right {
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
 }
 
 .icon-circle {
@@ -87,273 +92,186 @@ body {
     transform: rotate(25deg) scale(1.1);
 }
 
-
 /* ================= ESTILOS SECCIÓN 1: HERO ================= */
 .hero-left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 3rem 10% 3rem 8%;
-    background-color: var(--bg-light);
 }
-
 .logo-placeholder {
-    width: 220px;
-    height: 60px;
-    border: 2px dashed #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f9f9f9;
+    width: 220px; height: 60px; border: 2px dashed #ccc;
+    display: flex; align-items: center; justify-content: center; background: #f9f9f9;
 }
+.placeholder-text { font-size: 0.75rem; color: #888; text-transform: uppercase; text-align: center; padding: 10px; }
+.hero-content { margin: 4rem 0; }
+.hero-content h1 { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); text-transform: uppercase; margin-bottom: 1rem;}
+.hero-content .subtitle { font-size: 1.35rem; color: var(--text-muted); line-height: 1.5; max-width: 500px; }
+.date-text { font-size: 1rem; font-weight: 600; color: var(--primary-color); }
+.hero-right .image-placeholder { border-left: 2px solid #eaeaea; }
 
-.placeholder-text {
-    font-size: 0.75rem;
-    color: #888;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 10px;
+/* ================= ESTILOS SECCIÓN 2: NUESTRA EMPRESA ================= */
+.about-left .image-placeholder { border-right: 2px solid #eaeaea; }
+.about-right { display: flex; align-items: center; padding: 5rem 8% 5rem 10%; }
+.about-content h2 { font-size: 2.8rem; font-weight: 700; color: var(--primary-color); margin-bottom: 2rem; }
+.about-content p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; text-align: justify; }
+
+/* ================= ESTILOS SECCIÓN 3: CLIENTES ================= */
+.clients-left .image-placeholder { border-right: 2px solid #eaeaea; }
+.clients-right { display: flex; align-items: center; justify-content: center; padding: 5rem 5%; }
+.clients-content h2 { font-size: 2.6rem; font-weight: 700; color: var(--primary-color); margin-bottom: 3rem; text-align: center; }
+.logos-stack { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
+.client-logo-placeholder { width: 240px; height: 75px; border: 2px dashed #bbb; background-color: #fafafa; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+
+/* ================= ESTILOS SECCIÓN 4: ÁREAS DE NEGOCIOS ================= */
+.business-left { display: flex; align-items: center; padding: 5rem 10% 5rem 8%; }
+.business-content h2 { font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 2.5rem; }
+.business-content h3 { font-size: 1.4rem; font-weight: 700; color: #000000; margin-bottom: 1.2rem; }
+.business-content p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; }
+.business-content .list-intro { font-weight: 600; color: var(--primary-color); margin-bottom: 0.8rem; }
+.specialties-list { list-style: none; padding-left: 5px; }
+.specialties-list li { font-size: 1.1rem; font-weight: 600; color: #000000; margin-bottom: 0.4rem; }
+.business-right .image-placeholder { border-left: 2px solid #eaeaea; }
+
+/* ================= ESTILOS SECCIÓN 5: TITULAR ESPECIALIDADES ================= */
+.spec-title-left .image-placeholder { border-right: 2px solid #eaeaea; }
+.spec-title-right { display: flex; align-items: center; padding: 5rem 10%; }
+.spec-title-content h2 { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); letter-spacing: 2px; }
+
+/* ================= ESTILOS GENERALES DESGLOSE DE ESPECIALIDADES ================= */
+.spec-detail-content {
+    width: 100%;
 }
-
-.hero-content {
-    margin: 4rem 0;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    letter-spacing: -1px;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-}
-
-.hero-content .subtitle {
-    font-size: 1.35rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    max-width: 500px;
-}
-
-.date-text {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.hero-right .image-placeholder {
-    border-left: 2px solid #eaeaea;
-}
-
-
-/* ================= ESTILOS SECCIÓN 2: ABOUT / NUESTRA EMPRESA ================= */
-.about-left .image-placeholder {
-    border-right: 2px solid #eaeaea;
-}
-
-.about-right {
-    display: flex;
-    align-items: center;
-    padding: 5rem 8% 5rem 10%;
-    background-color: var(--bg-light);
-}
-
-.about-content h2 {
+.spec-detail-content h2 {
     font-size: 2.8rem;
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 2rem;
 }
-
-.about-content p {
+.bullet-list {
+    list-style: none;
+    padding-left: 0;
+}
+.bullet-list li {
     font-size: 1.1rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    text-align: justify;
+    color: #000000;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 20px;
 }
-
-.about-content p:last-child {
-    margin-bottom: 0;
-}
-
-
-/* ================= ESTILOS SECCIÓN 3: CLIENTES ================= */
-.clients-left .image-placeholder {
-    border-right: 2px solid #eaeaea;
-}
-
-.clients-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5rem 5%;
-    background-color: var(--bg-light);
-}
-
-.clients-content {
-    text-align: center;
-    width: 100%;
-    max-width: 450px;
-}
-
-.clients-content h2 {
-    font-size: 2.6rem;
-    font-weight: 700;
+/* Viñeta cuadrada o punto personalizado */
+.bullet-list li::before {
+    content: "•";
     color: var(--primary-color);
-    margin-bottom: 3rem;
-    line-height: 1.2;
+    font-weight: bold;
+    font-size: 1.3rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
 }
 
-.logos-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-}
-
-.client-logo-placeholder {
-    width: 240px;
-    height: 75px;
-    border: 2px dashed #bbb;
-    background-color: #fafafa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-}
-
-
-/* ================= ESTILOS SECCIÓN 4: DESARROLLO DE ÁREAS DE NEGOCIOS ================= */
-.business-left {
-    display: flex;
-    align-items: center;
-    padding: 5rem 10% 5rem 8%;
-    background-color: var(--bg-light);
-}
-
-.business-content h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
+/* Sub-bloques internos para el Área Sanitaria */
+.sub-block {
     margin-bottom: 2.5rem;
 }
-
-.business-content h3 {
-    font-size: 1.4rem;
+.sub-block:last-child {
+    margin-bottom: 0;
+}
+.sub-block h3 {
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #000000;
-    margin-bottom: 1.2rem;
-    line-height: 1.4;
-}
-
-.business-content p {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    text-align: justify;
-}
-
-.business-content .list-intro {
-    font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.specialties-list {
-    list-style: none; /* Quitamos los puntos estándar */
-    padding-left: 5px;
+/* Cortes Diagonales Estilizados en Pantallas Grandes */
+@media (min-width: 993px) {
+    /* Corte Diagonal Tipo 1: Imagen Izquierda cortada hacia adentro */
+    .type-diagonal-left .image-side {
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+        z-index: 2;
+    }
+    .type-diagonal-left .text-side {
+        margin-left: -7%;
+        padding: 5rem 8% 5rem 12%;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Corte Diagonal Tipo 2: Texto izquierdo e Imagen Derecha recibiendo el corte */
+    .type-diagonal-right .text-side {
+        padding: 5rem 12% 5rem 8%;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+    }
+    .type-diagonal-right .image-side {
+        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+        margin-left: -7%;
+    }
 }
 
-.specialties-list li {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #000000;
-    margin-bottom: 0.4rem;
-    position: relative;
-    padding-left: 0px;
-}
-
-.business-right .image-placeholder {
-    border-left: 2px solid #eaeaea;
-    /* background-image: url('casco-herramientas-laptop.jpg'); */
-}
-
-
-/* ================= RESPONSIVIDAD (PANTALLAS MEDIANAS Y MÓVILES) ================= */
+/* ================= RESPONSIVIDAD (MÓVILES Y TABLETS) ================= */
 @media (max-width: 992px) {
-    .hero-container, .about-container, .clients-container, .business-container {
+    .hero-container, .about-container, .clients-container, 
+    .business-container, .specialties-title-container, .spec-detail-container {
         flex-direction: column;
     }
     
-    .hero-left, .hero-right, 
-    .about-left, .about-right, 
-    .clients-left, .clients-right,
-    .business-left, .business-right {
+    .hero-left, .hero-right, .about-left, .about-right, 
+    .clients-left, .clients-right, .business-left, .business-right,
+    .spec-title-left, .spec-title-right, .spec-detail-left, .spec-detail-right {
         flex: 1 1 100%;
         width: 100%;
     }
     
-    .hero-left, .about-right, .clients-right, .business-left {
-        padding: 4rem 2rem;
+    .hero-left, .about-right, .clients-right, .business-left, .spec-title-right, .type-diagonal-left .text-side, .type-diagonal-right .text-side {
+        padding: 4rem 2rem !important;
+        margin-left: 0 !important;
     }
 
-    .hero-left { order: 1; }
-    .hero-right { order: 2; }
+    /* Ajustes de Orden */
+    .hero-left { order: 1; } .hero-right { order: 2; }
+    .about-left { order: 2; } .about-right { order: 1; }
+    .clients-left { order: 2; } .clients-right { order: 1; }
+    .business-left { order: 1; } .business-right { order: 2; }
+    .spec-title-left { order: 2; } .spec-title-right { order: 1; }
     
-    .about-left { order: 2; }
-    .about-right { order: 1; }
+    /* Inciso I: Imagen arriba, texto abajo */
+    .type-diagonal-left .image-side { order: 1; clip-path: none; }
+    .type-diagonal-left .text-side { order: 2; }
 
-    .clients-left { order: 2; }
-    .clients-right { order: 1; }
-
-    /* Misma estructura que Hero en responsive */
-    .business-left { order: 1; }
-    .business-right { order: 2; }
+    /* Inciso II: Texto arriba, imagen abajo */
+    .type-diagonal-right .text-side { order: 1; }
+    .type-diagonal-right .image-side { order: 2; clip-path: none; margin-left: 0; }
     
-    .hero-right .image-placeholder, 
-    .about-left .image-placeholder, 
-    .clients-left .image-placeholder,
-    .business-right .image-placeholder {
-        min-height: 400px;
-        height: 50vh;
+    .hero-right .image-placeholder, .about-left .image-placeholder, 
+    .clients-left .image-placeholder, .business-right .image-placeholder,
+    .spec-title-left .image-placeholder, .image-side .image-placeholder {
+        min-height: 350px;
+        height: 45vh;
     }
     
     .hero-content h1 { font-size: 2.5rem; }
-    .about-content h2, .clients-content h2, .business-content h2 { font-size: 2.2rem; }
-    .business-content h3 { font-size: 1.25rem; }
+    .about-content h2, .clients-content h2, .business-content h2, .spec-title-content h2, .spec-detail-content h2 { font-size: 2.2rem; }
     
-    /* Ajustes para las insignias flotantes en diseño vertical colapsado */
-    .hero-badge, .business-badge {
-        top: 50vh;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    /* Insignias móviles en el punto de división */
+    .hero-badge, .business-badge, .spec-detail-badge {
+        top: 45vh; left: 50%; transform: translate(-50%, -50%);
     }
-
-    .about-badge, .clients-badge {
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    .about-badge, .clients-badge, .spec-title-badge, .spec-detail-badge-right {
+        top: 0; left: 50%; transform: translate(-50%, -50%); right: auto;
     }
 }
 
 @media (max-width: 480px) {
     .hero-content h1 { font-size: 2rem; }
-    .hero-content .subtitle, .about-content p, .business-content p { font-size: 1rem; }
-    .about-content h2, .clients-content h2, .business-content h2 { font-size: 1.7rem; }
-    .business-content h3 { font-size: 1.15rem; }
-    
-    .client-logo-placeholder {
-        width: 200px;
-        height: 65px;
-    }
-
-    .icon-circle {
-        width: 80px;
-        height: 80px;
-    }
-    .icon-circle i {
-        font-size: 2rem;
-    }
+    .hero-content .subtitle, .about-content p, .business-content p, .bullet-list li { font-size: 1rem; }
+    .about-content h2, .clients-content h2, .business-content h2, .spec-title-content h2, .spec-detail-content h2 { font-size: 1.7rem; }
+    .client-logo-placeholder { width: 200px; height: 65px; }
+    .icon-circle { width: 80px; height: 80px; }
+    .icon-circle i { font-size: 2rem; }
 }
