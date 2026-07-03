@@ -1,8 +1,8 @@
 /* --- Variables de Color y Fuentes --- */
 :root {
-    --primary-color: #0b1e36; /* Azul oscuro para los textos principales */
-    --accent-blue: #3b82a6;  /* Azul del círculo del icono */
-    --text-muted: #555555;   /* Gris para subtítulos y fechas */
+    --primary-color: #0b1e36; /* Azul oscuro para los títulos principales */
+    --accent-blue: #3b82a6;  /* Azul de los círculos con iconos */
+    --text-muted: #555555;   /* Gris para el texto de los párrafos */
     --bg-light: #ffffff;
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -19,21 +19,83 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Contenedor Hero Principal --- */
-.hero-container {
+/* ================= DISEÑO ESTRUCTURAL GENERAL ================= */
+
+/* Contenedores Base de Pantalla Completa */
+.hero-container, .about-container {
     display: flex;
     min-height: 100vh;
     width: 100%;
     position: relative;
-    flex-wrap: wrap; /* Permite colapsar en móviles */
+    flex-wrap: wrap;
 }
 
-/* --- Columna Izquierda (Texto) --- */
-.hero-left {
+/* Columnas de Texto e Imagen compartiendo un 50% cada una */
+.hero-left, .hero-right, .about-left, .about-right {
     flex: 1 1 50%;
+    position: relative;
+}
+
+/* Marcador de posición estándar para imágenes */
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Insignias e Iconos Circulares Flotantes */
+.floating-badge {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+}
+
+/* Posición de la tuerca (Entre Hero Izquierda y Hero Derecha) */
+.hero-badge {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Posición de la bombilla (Entre About Izquierda y About Derecha) */
+.about-badge {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.icon-circle {
+    width: 100px;
+    height: 100px;
+    background-color: var(--accent-blue);
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.icon-circle i {
+    color: #ffffff;
+    font-size: 2.5rem;
+    transition: transform 0.5s ease; 
+}
+
+.icon-circle:hover i {
+    transform: rotate(25deg) scale(1.1);
+}
+
+
+/* ================= ESTILOS SECCIÓN 1: HERO ================= */
+.hero-left {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribuye logo arriba, texto al centro, fecha abajo */
+    justify-content: space-between;
     padding: 3rem 10% 3rem 8%;
     background-color: var(--bg-light);
 }
@@ -53,7 +115,7 @@ body {
     color: #888;
     text-transform: uppercase;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
 }
 
 .hero-content {
@@ -82,99 +144,94 @@ body {
     color: var(--primary-color);
 }
 
-/* --- Columna Derecha (Imagen) --- */
-.hero-right {
-    flex: 1 1 50%;
-    position: relative;
-    background-color: #f0f0f0;
-}
-
-.image-placeholder {
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    /* Cuando tengas tu imagen, descomenta la línea de abajo y pon su ruta: */
-    /* background-image: url('tus-planos-y-casco.jpg'); */
+.hero-right .image-placeholder {
     border-left: 2px solid #eaeaea;
+    /* background-image: url('tus-planos-y-casco.jpg'); */
 }
 
-/* --- Icono Flotante Central --- */
-.floating-badge {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+
+/* ================= ESTILOS SECCIÓN 2: ABOUT / NUESTRA EMPRESA ================= */
+.about-left .image-placeholder {
+    border-right: 2px solid #eaeaea;
+    /* background-image: url('maquinaria-y-repuestos.jpg'); */
 }
 
-.icon-circle {
-    width: 100px;
-    height: 100px;
-    background-color: var(--accent-blue);
-    border: 4px solid #ffffff;
-    border-radius: 50%;
+.about-right {
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    padding: 5rem 8% 5rem 10%;
+    background-color: var(--bg-light);
 }
 
-.icon-circle i {
-    color: #ffffff;
-    font-size: 2.5rem;
-    /* Animación sutil de rotación al pasar el mouse por diseño interactivo */
-    transition: transform 0.5s ease; 
+.about-content h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
 }
 
-.icon-circle:hover i {
-    transform: rotate(45deg);
+.about-content p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
 }
 
-/* --- Responsividad (Pantallas Medianas y Móviles) --- */
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ================= RESPONSIVIDAD (PANTALLAS MEDIANAS Y MÓVILES) ================= */
 @media (max-width: 992px) {
-    .hero-container {
+    .hero-container, .about-container {
         flex-direction: column;
     }
     
-    .hero-left, .hero-right {
+    .hero-left, .hero-right, .about-left, .about-right {
         flex: 1 1 100%;
+        width: 100%;
     }
     
-    .hero-left {
-        padding: 3rem 2rem;
-        order: 1;
+    .hero-left, .about-right {
+        padding: 4rem 2rem;
     }
+
+    .hero-left { order: 1; }
+    .hero-right { order: 2; }
     
-    .hero-right {
-        order: 2;
+    /* En tablet/móvil invertimos el orden para que la imagen de la empresa quede bien posicionada */
+    .about-left { order: 2; }
+    .about-right { order: 1; }
+    
+    .hero-right .image-placeholder, .about-left .image-placeholder {
+        min-height: 400px;
         height: 50vh;
     }
     
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
+    .hero-content h1 { font-size: 2.5rem; }
+    .about-content h2 { font-size: 2.2rem; }
     
-    /* Reposicionar el icono en móviles para que quede en la división horizontal */
-    .floating-badge {
-        top: 50%;
+    /* Ajustes para las insignias flotantes en diseño vertical colapsado */
+    .hero-badge {
+        top: 50vh; /* Ubicado exactamente en la división horizontal */
         left: 50%;
         transform: translate(-50%, -50%);
-        position: absolute;
+    }
+
+    .about-badge {
+        top: 0; /* Colocado justo en el corte entre texto e imagen */
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    .hero-content .subtitle {
-        font-size: 1.1rem;
-    }
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content .subtitle, .about-content p { font-size: 1rem; }
+    .about-content h2 { font-size: 1.8rem; }
+    
     .icon-circle {
         width: 80px;
         height: 80px;
