@@ -265,3 +265,92 @@ body {
     .icon-circle { width: 80px; height: 80px; }
     .icon-circle i { font-size: 2rem; }
 }
+
+/* ================= EFECTOS DE MOVIMIENTO Y TRANSICIONES ================= */
+
+/* Estado inicial para la aparición suave (Scroll Reveal) */
+.hero-content, .about-content, .clients-content, .business-content, .spec-detail-content, .spec-title-content {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Estado cuando la sección es visible en pantalla */
+.hero-content.reveal-active, 
+.about-content.reveal-active, 
+.clients-content.reveal-active, 
+.business-content.reveal-active, 
+.spec-detail-content.reveal-active, 
+.spec-title-content.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efecto de profundidad Parallax para las imágenes de fondo (Solo escritorios) */
+@media (min-width: 993px) {
+    .hero-right, .about-left, .clients-left, .business-right, .spec-title-left, .image-side {
+        background-attachment: fixed;
+    }
+}
+
+/* Transiciones suaves globales para elementos interactivos */
+.icon-circle, .client-logo-wrapper img, .contact-item {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Efecto Hover extra para logos de clientes */
+.client-logo-wrapper:hover img {
+    transform: scale(1.08);
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+}
+
+
+/* ================= BOTÓN FLOTANTE DE WHATSAPP ================= */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.15);
+    background-color: #20ba5a;
+}
+
+/* Animación de Ondas/Pulso para capturar la atención */
+@keyframes pulse-whatsapp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Ajuste del botón para pantallas móviles pequeñas */
+@media (max-width: 480px) {
+    .whatsapp-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+}
