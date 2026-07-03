@@ -22,7 +22,7 @@ body {
 /* ================= DISEÑO ESTRUCTURAL GENERAL ================= */
 
 /* Contenedores Base de Pantalla Completa */
-.hero-container, .about-container {
+.hero-container, .about-container, .clients-container {
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -31,7 +31,7 @@ body {
 }
 
 /* Columnas de Texto e Imagen compartiendo un 50% cada una */
-.hero-left, .hero-right, .about-left, .about-right {
+.hero-left, .hero-right, .about-left, .about-right, .clients-left, .clients-right {
     flex: 1 1 50%;
     position: relative;
 }
@@ -56,14 +56,8 @@ body {
     z-index: 10;
 }
 
-/* Posición de la tuerca (Entre Hero Izquierda y Hero Derecha) */
-.hero-badge {
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Posición de la bombilla (Entre About Izquierda y About Derecha) */
-.about-badge {
+/* Posición de insignias entre columnas */
+.hero-badge, .about-badge, .clients-badge {
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -183,45 +177,96 @@ body {
 }
 
 
+/* ================= ESTILOS SECCIÓN 3: CLIENTES ================= */
+.clients-left .image-placeholder {
+    border-right: 2px solid #eaeaea;
+    /* background-image: url('planos-compas.jpg'); */
+}
+
+.clients-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 5%;
+    background-color: var(--bg-light);
+}
+
+.clients-content {
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+}
+
+.clients-content h2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    line-height: 1.2;
+}
+
+.logos-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem; /* Separación vertical uniforme entre logos */
+}
+
+.client-logo-placeholder {
+    width: 240px;
+    height: 75px;
+    border: 2px dashed #bbb;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+
 /* ================= RESPONSIVIDAD (PANTALLAS MEDIANAS Y MÓVILES) ================= */
 @media (max-width: 992px) {
-    .hero-container, .about-container {
+    .hero-container, .about-container, .clients-container {
         flex-direction: column;
     }
     
-    .hero-left, .hero-right, .about-left, .about-right {
+    .hero-left, .hero-right, .about-left, .about-right, .clients-left, .clients-right {
         flex: 1 1 100%;
         width: 100%;
     }
     
-    .hero-left, .about-right {
+    .hero-left, .about-right, .clients-right {
         padding: 4rem 2rem;
     }
 
     .hero-left { order: 1; }
     .hero-right { order: 2; }
     
-    /* En tablet/móvil invertimos el orden para que la imagen de la empresa quede bien posicionada */
     .about-left { order: 2; }
     .about-right { order: 1; }
+
+    .clients-left { order: 2; }
+    .clients-right { order: 1; }
     
-    .hero-right .image-placeholder, .about-left .image-placeholder {
+    .hero-right .image-placeholder, 
+    .about-left .image-placeholder, 
+    .clients-left .image-placeholder {
         min-height: 400px;
         height: 50vh;
     }
     
     .hero-content h1 { font-size: 2.5rem; }
-    .about-content h2 { font-size: 2.2rem; }
+    .about-content h2, .clients-content h2 { font-size: 2.2rem; }
     
     /* Ajustes para las insignias flotantes en diseño vertical colapsado */
     .hero-badge {
-        top: 50vh; /* Ubicado exactamente en la división horizontal */
+        top: 50vh;
         left: 50%;
         transform: translate(-50%, -50%);
     }
 
-    .about-badge {
-        top: 0; /* Colocado justo en el corte entre texto e imagen */
+    .about-badge, .clients-badge {
+        top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -230,8 +275,13 @@ body {
 @media (max-width: 480px) {
     .hero-content h1 { font-size: 2rem; }
     .hero-content .subtitle, .about-content p { font-size: 1rem; }
-    .about-content h2 { font-size: 1.8rem; }
+    .about-content h2, .clients-content h2 { font-size: 1.8rem; }
     
+    .client-logo-placeholder {
+        width: 200px;
+        height: 65px;
+    }
+
     .icon-circle {
         width: 80px;
         height: 80px;
