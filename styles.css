@@ -22,7 +22,7 @@ body {
 /* ================= DISEÑO ESTRUCTURAL GENERAL ================= */
 
 /* Contenedores Base de Pantalla Completa */
-.hero-container, .about-container, .clients-container {
+.hero-container, .about-container, .clients-container, .business-container {
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -31,7 +31,10 @@ body {
 }
 
 /* Columnas de Texto e Imagen compartiendo un 50% cada una */
-.hero-left, .hero-right, .about-left, .about-right, .clients-left, .clients-right {
+.hero-left, .hero-right, 
+.about-left, .about-right, 
+.clients-left, .clients-right,
+.business-left, .business-right {
     flex: 1 1 50%;
     position: relative;
 }
@@ -57,7 +60,7 @@ body {
 }
 
 /* Posición de insignias entre columnas */
-.hero-badge, .about-badge, .clients-badge {
+.hero-badge, .about-badge, .clients-badge, .business-badge {
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -140,14 +143,12 @@ body {
 
 .hero-right .image-placeholder {
     border-left: 2px solid #eaeaea;
-    /* background-image: url('tus-planos-y-casco.jpg'); */
 }
 
 
 /* ================= ESTILOS SECCIÓN 2: ABOUT / NUESTRA EMPRESA ================= */
 .about-left .image-placeholder {
     border-right: 2px solid #eaeaea;
-    /* background-image: url('maquinaria-y-repuestos.jpg'); */
 }
 
 .about-right {
@@ -180,7 +181,6 @@ body {
 /* ================= ESTILOS SECCIÓN 3: CLIENTES ================= */
 .clients-left .image-placeholder {
     border-right: 2px solid #eaeaea;
-    /* background-image: url('planos-compas.jpg'); */
 }
 
 .clients-right {
@@ -209,7 +209,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem; /* Separación vertical uniforme entre logos */
+    gap: 2.5rem;
 }
 
 .client-logo-placeholder {
@@ -224,18 +224,78 @@ body {
 }
 
 
+/* ================= ESTILOS SECCIÓN 4: DESARROLLO DE ÁREAS DE NEGOCIOS ================= */
+.business-left {
+    display: flex;
+    align-items: center;
+    padding: 5rem 10% 5rem 8%;
+    background-color: var(--bg-light);
+}
+
+.business-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+}
+
+.business-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+}
+
+.business-content p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.business-content .list-intro {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+}
+
+.specialties-list {
+    list-style: none; /* Quitamos los puntos estándar */
+    padding-left: 5px;
+}
+
+.specialties-list li {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 0.4rem;
+    position: relative;
+    padding-left: 0px;
+}
+
+.business-right .image-placeholder {
+    border-left: 2px solid #eaeaea;
+    /* background-image: url('casco-herramientas-laptop.jpg'); */
+}
+
+
 /* ================= RESPONSIVIDAD (PANTALLAS MEDIANAS Y MÓVILES) ================= */
 @media (max-width: 992px) {
-    .hero-container, .about-container, .clients-container {
+    .hero-container, .about-container, .clients-container, .business-container {
         flex-direction: column;
     }
     
-    .hero-left, .hero-right, .about-left, .about-right, .clients-left, .clients-right {
+    .hero-left, .hero-right, 
+    .about-left, .about-right, 
+    .clients-left, .clients-right,
+    .business-left, .business-right {
         flex: 1 1 100%;
         width: 100%;
     }
     
-    .hero-left, .about-right, .clients-right {
+    .hero-left, .about-right, .clients-right, .business-left {
         padding: 4rem 2rem;
     }
 
@@ -247,19 +307,25 @@ body {
 
     .clients-left { order: 2; }
     .clients-right { order: 1; }
+
+    /* Misma estructura que Hero en responsive */
+    .business-left { order: 1; }
+    .business-right { order: 2; }
     
     .hero-right .image-placeholder, 
     .about-left .image-placeholder, 
-    .clients-left .image-placeholder {
+    .clients-left .image-placeholder,
+    .business-right .image-placeholder {
         min-height: 400px;
         height: 50vh;
     }
     
     .hero-content h1 { font-size: 2.5rem; }
-    .about-content h2, .clients-content h2 { font-size: 2.2rem; }
+    .about-content h2, .clients-content h2, .business-content h2 { font-size: 2.2rem; }
+    .business-content h3 { font-size: 1.25rem; }
     
     /* Ajustes para las insignias flotantes en diseño vertical colapsado */
-    .hero-badge {
+    .hero-badge, .business-badge {
         top: 50vh;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -274,8 +340,9 @@ body {
 
 @media (max-width: 480px) {
     .hero-content h1 { font-size: 2rem; }
-    .hero-content .subtitle, .about-content p { font-size: 1rem; }
-    .about-content h2, .clients-content h2 { font-size: 1.8rem; }
+    .hero-content .subtitle, .about-content p, .business-content p { font-size: 1rem; }
+    .about-content h2, .clients-content h2, .business-content h2 { font-size: 1.7rem; }
+    .business-content h3 { font-size: 1.15rem; }
     
     .client-logo-placeholder {
         width: 200px;
