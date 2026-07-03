@@ -36,16 +36,30 @@ body {
     position: relative;
 }
 
-.image-placeholder {
-    width: 100%;
-    height: 100%;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
+/* --- Vinculación de imágenes corregida con dobles comillas para evitar fallos de lectura --- */
+.img-bg-hero { background-image: url("herramientas construccion.png"); }
+.img-bg-about { background-image: url("piezas industriales.png"); }
+.img-bg-clients { background-image: url("compas.png"); }
+.img-bg-business { background-image: url("laptop y casco.png"); }
+.img-bg-spec-title { background-image: url("plomería y planos.png"); }
+.img-bg-spec-1 { background-image: url("instalación de tejas.png"); }
+.img-bg-spec-2 { background-image: url("instalación de la grifería con la llave ajust....png"); }
+.img-bg-spec-3 { background-image: url("motores industriales.png"); }
+.img-bg-spec-4 { background-image: url("camión de transporte de residuos peligrosos.png"); }
+
+.hero-right, .about-left, .clients-left, .business-right, 
+.spec-title-left, .image-side {
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    min-height: 500px;
+}
+
+/* Logos Corporativos */
+.main-logo {
+    max-width: 240px;
+    height: auto;
+    display: block;
 }
 
 /* Insignias Flotantes */
@@ -86,26 +100,36 @@ body {
 
 /* ================= SECCIÓN 1: HERO ================= */
 .hero-left { display: flex; flex-direction: column; justify-content: space-between; padding: 3rem 10% 3rem 8%; }
-.logo-placeholder { width: 220px; height: 60px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center; background: #f9f9f9; }
-.placeholder-text { font-size: 0.75rem; color: #888; text-transform: uppercase; text-align: center; padding: 10px; }
 .hero-content { margin: 4rem 0; }
 .hero-content h1 { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); text-transform: uppercase; margin-bottom: 1rem;}
 .hero-content .subtitle { font-size: 1.35rem; color: var(--text-muted); line-height: 1.5; max-width: 500px; }
 .date-text { font-size: 1rem; font-weight: 600; color: var(--primary-color); }
-.hero-right .image-placeholder { border-left: 2px solid #eaeaea; }
+.hero-right { border-left: 2px solid #eaeaea; }
 
 /* ================= SECCIÓN 2: NUESTRA EMPRESA ================= */
-.about-left .image-placeholder { border-right: 2px solid #eaeaea; }
+.about-left { border-right: 2px solid #eaeaea; }
 .about-right { display: flex; align-items: center; padding: 5rem 8% 5rem 10%; }
 .about-content h2 { font-size: 2.8rem; font-weight: 700; color: var(--primary-color); margin-bottom: 2rem; }
 .about-content p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; text-align: justify; }
 
 /* ================= SECCIÓN 3: CLIENTES ================= */
-.clients-left .image-placeholder { border-right: 2px solid #eaeaea; }
+.clients-left { border-right: 2px solid #eaeaea; }
 .clients-right { display: flex; align-items: center; justify-content: center; padding: 5rem 5%; }
 .clients-content h2 { font-size: 2.6rem; font-weight: 700; color: var(--primary-color); margin-bottom: 3rem; text-align: center; }
 .logos-stack { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
-.client-logo-placeholder { width: 240px; height: 75px; border: 2px dashed #bbb; background-color: #fafafa; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+
+.client-logo-wrapper {
+    width: 240px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.client-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
 
 /* ================= SECCIÓN 4: ÁREAS DE NEGOCIOS ================= */
 .business-left { display: flex; align-items: center; padding: 5rem 10% 5rem 8%; }
@@ -115,10 +139,10 @@ body {
 .business-content .list-intro { font-weight: 600; color: var(--primary-color); margin-bottom: 0.8rem; }
 .specialties-list { list-style: none; padding-left: 5px; }
 .specialties-list li { font-size: 1.1rem; font-weight: 600; color: #000000; margin-bottom: 0.4rem; }
-.business-right .image-placeholder { border-left: 2px solid #eaeaea; }
+.business-right { border-left: 2px solid #eaeaea; }
 
 /* ================= SECCIÓN 5: TITULAR ESPECIALIDADES ================= */
-.spec-title-left .image-placeholder { border-right: 2px solid #eaeaea; }
+.spec-title-left { border-right: 2px solid #eaeaea; }
 .spec-title-right { display: flex; align-items: center; padding: 5rem 10%; }
 .spec-title-content h2 { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); letter-spacing: 2px; }
 
@@ -162,76 +186,24 @@ body {
     overflow: hidden;
 }
 
-/* Capas del Triángulo Geométrico de Cierre */
-.triangle-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-}
-.layer-1 {
-    background-color: #0b1e36;
-    clip-path: polygon(0 0, 100% 50%, 0 100%);
-    z-index: 1;
-}
-.layer-2 {
-    background-color: #17365d;
-    clip-path: polygon(0 0, 85% 50%, 0 100%);
-    z-index: 2;
-}
-.layer-3 {
-    background-color: #265584;
-    clip-path: polygon(0 0, 70% 50%, 0 100%);
-    z-index: 3;
+.triangle-layer { position: absolute; top: 0; left: 0; height: 100%; width: 100%; }
+.layer-1 { background-color: #0b1e36; clip-path: polygon(0 0, 100% 50%, 0 100%); z-index: 1; }
+.layer-2 { background-color: #17365d; clip-path: polygon(0 0, 85% 50%, 0 100%); z-index: 2; }
+.layer-3 { background-color: #265584; clip-path: polygon(0 0, 70% 50%, 0 100%); z-index: 3; }
+
+.footer-body { display: flex; width: 65%; margin-left: auto; align-items: center; justify-content: center; gap: 4rem; z-index: 5; }
+
+.footer-logo {
+    max-width: 250px;
+    height: auto;
+    display: block;
 }
 
-.footer-body {
-    display: flex;
-    width: 65%;
-    margin-left: auto;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
-    z-index: 5;
-}
+.footer-divider-line { width: 2px; height: 180px; background-color: #000000; }
+.footer-info-area { display: flex; flex-direction: column; gap: 1.2rem; }
 
-.footer-logo-placeholder {
-    width: 250px;
-    height: 80px;
-    border: 2px dashed #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer-divider-line {
-    width: 2px;
-    height: 180px;
-    background-color: #000000;
-}
-
-.footer-info-area {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: #0b1e36;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.contact-item i {
-    font-size: 1.4rem;
-    color: var(--accent-blue);
-    width: 30px;
-    text-align: center;
-}
+.contact-item { display: flex; align-items: center; gap: 1rem; color: #0b1e36; font-size: 1.1rem; font-weight: 600; }
+.contact-item i { font-size: 1.4rem; color: var(--accent-blue); width: 30px; text-align: center; }
 
 /* ================= RESPONSIVIDAD GENERAL (TABLETS Y MÓVILES) ================= */
 @media (max-width: 992px) {
@@ -251,7 +223,7 @@ body {
         padding: 4rem 2rem !important; margin-left: 0 !important;
     }
 
-    /* Ordenamiento de bloques */
+    /* Ordenamiento de flexboxes */
     .hero-left { order: 1; } .hero-right { order: 2; }
     .about-left { order: 2; } .about-right { order: 1; }
     .clients-left { order: 2; } .clients-right { order: 1; }
@@ -263,9 +235,8 @@ body {
     .type-diagonal-right .text-side { order: 1; }
     .type-diagonal-right .image-side { order: 2; clip-path: none; margin-left: 0; }
     
-    .hero-right .image-placeholder, .about-left .image-placeholder, 
-    .clients-left .image-placeholder, .business-right .image-placeholder,
-    .spec-title-left .image-placeholder, .image-side .image-placeholder {
+    .hero-right, .about-left, .clients-left, .business-right,
+    .spec-title-left, .image-side {
         min-height: 350px; height: 45vh;
     }
     
@@ -275,7 +246,7 @@ body {
     .hero-badge, .business-badge, .spec-detail-badge { top: 45vh; left: 50%; transform: translate(-50%, -50%); }
     .about-badge, .clients-badge, .spec-title-badge, .spec-detail-badge-right { top: 0; left: 50%; transform: translate(-50%, -50%); right: auto; }
 
-    /* Ajustes de Footer Móvil */
+    /* Footer Responsive */
     .footer-graphics { width: 100%; height: 150px; position: relative; }
     .layer-1 { clip-path: polygon(0 0, 50% 100%, 100% 0); }
     .layer-2 { clip-path: polygon(0 0, 50% 85%, 100% 0); }
@@ -290,7 +261,7 @@ body {
     .hero-content h1 { font-size: 2rem; }
     .hero-content .subtitle, .about-content p, .business-content p, .bullet-list li, .contact-item { font-size: 1rem; }
     .about-content h2, .clients-content h2, .business-content h2, .spec-title-content h2, .spec-detail-content h2 { font-size: 1.6rem; }
-    .client-logo-placeholder { width: 180px; height: 60px; }
+    .client-logo-wrapper { width: 180px; height: 60px; }
     .icon-circle { width: 80px; height: 80px; }
     .icon-circle i { font-size: 2rem; }
 }
