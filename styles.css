@@ -102,7 +102,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll !important; /* Corregido: Sin zoom forzado */
+    background-attachment: scroll !important; /* Asegura el comportamiento estático sin zoom */
     min-height: 500px;
 }
 
@@ -256,27 +256,31 @@ body {
 .contact-item { display: flex; align-items: center; gap: 1rem; color: #0b1e36; font-size: 1.1rem; font-weight: 600; }
 .contact-item i { font-size: 1.4rem; color: var(--accent-blue); width: 30px; text-align: center; }
 
-/* ================= RESPONSIVIDAD GENERAL (TABLETS Y MÓVILES) ================= */
+/* ================= RESPONSIVIDAD GENERAL CORREGIDA (TABLETS Y MÓVILES) ================= */
 @media (max-width: 992px) {
-    .navbar { display: none; } /* Oculta menú en responsive por simplicidad */
+    .navbar { display: none; } 
     body { padding-top: 0; }
 
     .hero-container, .about-container, .clients-container, 
-    .business-container, .specialties-title-container, .spec-detail-container, .footer-container {
+    .business-container, .specialties-title-container, .spec-detail-container {
         flex-direction: column;
+        min-height: auto;
     }
     
     .hero-left, .hero-right, .about-left, .about-right, 
     .clients-left, .clients-right, .business-left, .business-right,
     .spec-title-left, .spec-title-right, .spec-detail-left, .spec-detail-right {
-        flex: 1 1 100%; width: 100%;
+        flex: 1 1 100%; 
+        width: 100%;
     }
     
     .hero-left, .about-right, .clients-right, .business-left, .spec-title-right, 
     .type-diagonal-left .text-side, .type-diagonal-right .text-side {
-        padding: 4rem 2rem !important; margin-left: 0 !important;
+        padding: 4rem 1.5rem !important; 
+        margin-left: 0 !important;
     }
 
+    /* Ordenamiento de bloques */
     .hero-left { order: 1; } .hero-right { order: 2; }
     .about-left { order: 2; } .about-right { order: 1; }
     .clients-left { order: 2; } .clients-right { order: 1; }
@@ -288,25 +292,42 @@ body {
     .type-diagonal-right .text-side { order: 1; }
     .type-diagonal-right .image-side { order: 2; clip-path: none; margin-left: 0; }
     
+    /* Corrección crítica en móvil: Muestra las imágenes completas de borde a borde sin recortes */
     .hero-right, .about-left, .clients-left, .business-right,
     .spec-title-left, .image-side {
-        min-height: 350px; height: 45vh;
+        min-height: auto;
+        height: 56vw; 
+        background-size: contain; 
+        background-color: #ffffff;
     }
     
-    .hero-content h1 { font-size: 2.5rem; }
-    .about-content h2, .clients-content h2, .business-content h2, .spec-title-content h2, .spec-detail-content h2 { font-size: 2.2rem; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .about-content h2, .clients-content h2, .business-content h2, .spec-title-content h2, .spec-detail-content h2 { font-size: 1.8rem; }
     
-    .hero-badge, .business-badge, .spec-detail-badge { top: 45vh; left: 50%; transform: translate(-50%, -50%); }
-    .about-badge, .clients-badge, .spec-title-badge, .spec-detail-badge-right { top: 0; left: 50%; transform: translate(-50%, -50%); right: auto; }
+    /* Reposicionamiento exacto de las insignias en la unión móvil */
+    .hero-badge, .business-badge, .spec-detail-badge { 
+        top: auto;
+        bottom: 56vw; 
+        left: 50%; 
+        transform: translate(-50%, 50%); 
+    }
+    .about-badge, .clients-badge, .spec-title-badge, .spec-detail-badge-right { 
+        top: 0; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        right: auto; 
+    }
 
-    .footer-graphics { width: 100%; height: 150px; position: relative; }
+    /* Footer Responsivo */
+    .footer-container { flex-direction: column; padding: 3rem 1.5rem; }
+    .footer-graphics { width: 100%; height: 100px; position: relative; margin-bottom: 2rem; }
     .layer-1 { clip-path: polygon(0 0, 50% 100%, 100% 0); }
     .layer-2 { clip-path: polygon(0 0, 50% 85%, 100% 0); }
     .layer-3 { clip-path: polygon(0 0, 50% 70%, 100% 0); }
     
-    .footer-body { width: 100%; flex-direction: column; gap: 2rem; padding: 2rem 0; }
-    .footer-divider-line { width: 150px; height: 2px; }
-    .footer-info-area { align-items: center; }
+    .footer-body { width: 100%; flex-direction: column; gap: 2rem; }
+    .footer-divider-line { width: 120px; height: 2px; }
+    .footer-info-area { align-items: center; text-align: center; }
 }
 
 @media (max-width: 480px) {
